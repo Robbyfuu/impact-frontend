@@ -1,0 +1,7 @@
+{
+  "name": "impact-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

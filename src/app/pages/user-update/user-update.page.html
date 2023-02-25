@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="primary"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Actualizar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="update( fUpdate )" #fUpdate="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item fill="outline" style="margin-bottom: 2%;">
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input name="name" type="text" [(ngModel)]="collaborator.nombre" required></ion-input>
+          </ion-item>
+          <ion-item fill="outline" style="margin-bottom: 2%;">
+            <ion-label position="floating">Apellido Paterno</ion-label>
+            <ion-input name="lastNameFather" type="text" [(ngModel)]="collaborator.apellido_paterno" required></ion-input>
+          </ion-item>
+          <ion-item fill="outline" style="margin-bottom: 2%;">
+            <ion-label position="floating">Apellido Materno</ion-label>
+            <ion-input name="lastNameMother" type="text" [(ngModel)]="collaborator.apellido_materno" required></ion-input>
+          </ion-item>
+          <ion-item fill="outline" style="margin-bottom: 2%;">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              name="email"
+              type="email"
+              ngModel
+              email
+              [(ngModel)]="collaborator.email"
+              required
+            ></ion-input>
+            <ion-note slot="error">Email invalido</ion-note>
+          </ion-item>
+          <ion-item fill="outline">
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input name="phone" type="tel" [(ngModel)]="collaborator.telefono" required></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="justify-content: center; display: flex;">
+        <ion-button type="submit" color="tertiary" shape="round">
+          Actualizar usuario
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

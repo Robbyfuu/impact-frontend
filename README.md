@@ -35,7 +35,7 @@ PD: La documentacion son los readme de los 2 repositorios de GITHUB
 
 ## Acceder al Proyecto
 
-- Se puede acceder directamente aquí : <a href="https://bsaletest-roberto-arce.netlify.app/">Impact Prueba</a>
+- Se puede acceder directamente aquí : <a href="https://impact-frontend.vercel.app/login">Impact Prueba</a>
 - También lo puedes descargar o clonar el repositorio de GitHub y hacer el deploy localmente en tu dispositivo
 
   ### Instalación Local

@@ -36,7 +36,6 @@ export class UsuarioService {
     return new Promise((resolve) => {
       this.http.post<IResponse>(`${URL}/auth/login`, data).subscribe(
         (response) => {
-          console.log(response);
           if (response['ok'] === true) {
             this.saveToken(response['token'], response['usuario']!);
             resolve(true);
@@ -45,7 +44,6 @@ export class UsuarioService {
         (error: HttpErrorResponse) => {
           this.token = '';
           this.storage.clear();
-          console.log('Error en el login', error);
           resolve(false);
         }
       );
@@ -90,7 +88,6 @@ export class UsuarioService {
     });
   }
   register(usuario: IUsuario) {
-    console.log(usuario)
     return new Promise<boolean>((resolve) => {
       this.http.post<IResponse>(`${URL}/usuarios`, usuario)
       .subscribe(
@@ -101,7 +98,6 @@ export class UsuarioService {
           }
         },
         (error: HttpErrorResponse) => {
-          console.log('Error en el registro', error);
           resolve(false);
         }
       );

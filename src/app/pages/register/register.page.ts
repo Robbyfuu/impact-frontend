@@ -34,7 +34,7 @@ export class RegisterPage implements OnInit {
       return;
     }
     const createValid = await this.collaboratorService.createCollaborator(this.collaborator);
-    console.log(createValid)
+  
     if(createValid){
       this.uiService.alertaInformativa('Usuario Creado Existosamente');
       this.collaborator = {

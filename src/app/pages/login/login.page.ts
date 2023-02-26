@@ -76,6 +76,7 @@ export class LoginPage implements OnInit {
 
     if(valid){
       // navegar al tabs
+      this.uiService.presentToast('Bienvenido');
       this.navCtrl.navigateRoot('/register', {animated: true});
     }else{
       // mostrar alerta de usuario y contraseña no correcto

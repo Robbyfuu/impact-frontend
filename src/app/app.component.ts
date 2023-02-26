@@ -10,7 +10,6 @@ import { UsuarioService } from './services';
 })
 export class AppComponent {
 
-  name = environment.name;
   code = environment.code;
 
   public appPages = [
@@ -24,8 +23,7 @@ export class AppComponent {
 
   usuario : IUsuario = {};
    ngOnInit() {
-    console.log(this.name)
-    console.log(this.code)
+    console.log('environment:'+ this.code)
   }
   onMenuOpen(){
     this.usuario =  this.usuarioService.getUser()

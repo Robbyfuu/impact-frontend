@@ -37,10 +37,9 @@ export class UserListPage implements OnInit {
 
   ngOnInit() {
     this.collaboratorService.getCollaborators().subscribe((response) => {
-      console.log(response.trabajadores)
       this.dataSource = response.trabajadores!;
     });
-    console.log(this.dataSource)
+   
   }
 
   editar(collaborator: ICollaborator) {

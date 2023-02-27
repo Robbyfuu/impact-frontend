@@ -1,2 +1,3 @@
-export * from './collaborator';
-export * from './usuario';
+export * from './collaborator.interface';
+export * from './response.interface';
+export * from './usuario.interface';

@@ -1,22 +1,18 @@
-import { NavController } from '@ionic/angular';
-import { IUsuario } from './../../interfaces';
-import { environment } from './../../environments/environment';
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders,
+  HttpHeaders
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { environment } from './../../environments/environment';
+import { IResponseUser, IUsuario } from './../../interfaces';
 
 
 const URL = environment.url;
 
-interface IResponse {
-  ok: boolean;
-  token: string;
-  usuario?: IUsuario;
-}
+
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +30,7 @@ export class UsuarioService {
   login(email: string, password: string) {
     const data = { email, password };
     return new Promise((resolve) => {
-      this.http.post<IResponse>(`${URL}/auth/login`, data).subscribe(
+      this.http.post<IResponseUser>(`${URL}/auth/login`, data).subscribe(
         (response) => {
           if (response['ok'] === true) {
             this.saveToken(response['token'], response['usuario']!);
@@ -75,7 +71,7 @@ export class UsuarioService {
         'x-token': this.token,
       });
       this.http
-        .get<IResponse>(`${URL}/auth/`, { headers })
+        .get<IResponseUser>(`${URL}/auth/`, { headers })
         .subscribe((response) => {
           if (response['ok']) {
             this.usuario = response['usuario']!;
@@ -89,7 +85,7 @@ export class UsuarioService {
   }
   register(usuario: IUsuario) {
     return new Promise<boolean>((resolve) => {
-      this.http.post<IResponse>(`${URL}/usuarios`, usuario)
+      this.http.post<IResponseUser>(`${URL}/usuarios`, usuario)
       .subscribe(
         (response) => {
           if (response['ok']) {

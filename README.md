@@ -9,7 +9,7 @@
    </p>
 
 PD: La documentacion son los readme de los 2 repositorios de GITHUB
-<a href="https://github.com/Robbyfuu/backend-BSale">REST API</a>
+<a href="https://github.com/Robbyfuu/backend-impact-prueba">REST API</a>
 
 ## Indice
 

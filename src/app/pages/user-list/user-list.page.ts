@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CollaboratorService, UiServiceService } from 'src/app/services';
 
 import { Router } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ICollaborator } from '../../../interfaces/collaborator.interface';
+import { MatTableDataSource } from '@angular/material/table';
+
+import { CollaboratorService, UiServiceService } from 'src/app/services';
+import { ICollaborator } from '../../../interfaces';
 
 @Component({
   selector: 'app-user-list',
@@ -22,24 +24,32 @@ export class UserListPage implements OnInit {
     'telefono',
     'acciones',
   ];
-  dataSource: ICollaborator[] = [];
+  dataSource: MatTableDataSource<ICollaborator>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator ;
   @ViewChild(MatSort) sort!: MatSort;
-
+  collaborators : ICollaborator[] = [];
   constructor(
     private collaboratorService: CollaboratorService,
     private uiService: UiServiceService,
     private route : Router,
 
-  ) {}
+  ) {
+    
+    this.dataSource = new MatTableDataSource();
+  }
 
   ngOnInit() {
     this.collaboratorService.getCollaborators().subscribe((response) => {
-      this.dataSource = response.trabajadores!;
-    });
-   
+      this.collaborators = response['trabajadores']!;
+      this.dataSource.data = this.collaborators;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+    );
   }
+   
+
 
   editar(collaborator: ICollaborator) {
     this.route.navigate(['/userUpdate'],{queryParams:collaborator});
@@ -51,5 +61,13 @@ export class UserListPage implements OnInit {
           this.uiService.alertaInformativa('Se elimino correctamente');
           this.ngOnInit();
         });
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

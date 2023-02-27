@@ -51,7 +51,7 @@ PD: La documentacion son los readme de los 2 repositorios de GITHUB
 - HTML
 - CSS
 - TypeScript
-- Netlify (Para el Deploy)
+- Vercel (para el deploy)
 
 ## Autor
 

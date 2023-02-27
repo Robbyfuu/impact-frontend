@@ -1,10 +1,9 @@
-import { CollaboratorService, UiServiceService } from './../../services';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { CollaboratorService, UiServiceService } from './../../services';
 import { ICollaborator } from 'src/interfaces';
-import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-user-update',
@@ -14,13 +13,13 @@ import { LocationStrategy } from '@angular/common';
 export class UserUpdatePage implements OnInit {
   urlReturn = '/usersList';
   collaborator: ICollaborator = {};
-  state = this.locationStrategy.getState();
+
   constructor(
     private collaboratorService: CollaboratorService,
     private route: Router,
     private uiService: UiServiceService,
     private activatedRoute: ActivatedRoute,
-    private locationStrategy: LocationStrategy
+
   ) {}
 
   ngOnInit() {

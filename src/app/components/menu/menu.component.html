@@ -1,0 +1,36 @@
+<ion-menu contentId="main-content" (ionWillOpen)="onMenuOpen()" menuId="first" *ngIf="isLogged">
+  <ion-content>
+    <ion-list id="inbox-list">
+      <ion-list-header>Bienvenido</ion-list-header>
+      <ion-note> {{ usuario.nombre }} </ion-note>
+      <ion-menu-toggle
+        auto-hide="false"
+        *ngFor="let p of appPages; let i = index"
+      >
+        <ion-item
+          routerDirection="root"
+          [routerLink]="[p.url]"
+          lines="none"
+          detail="false"
+          routerLinkActive="selected"
+        >
+          <ion-icon
+            aria-hidden="true"
+            slot="start"
+            [ios]="p.icon + '-outline'"
+            [md]="p.icon + '-sharp'"
+          ></ion-icon>
+          <ion-label>{{ p.title }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+    <div class="logout">
+  
+      <ion-button expand="block" color="danger"
+      (click)="logout()">
+        <ion-icon name="log-out-outline"
+                  slot="start"></ion-icon>
+        Cerrar Sesion</ion-button>
+    </div>
+  </ion-content>
+</ion-menu>

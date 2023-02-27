@@ -1,4 +1,4 @@
-<ion-menu contentId="main-content" (ionWillOpen)="onMenuOpen()" menuId="first" *ngIf="isLogged">
+<ion-menu contentId="main-content" (ionWillOpen)="onMenuOpen()" menuId="first" disabled={{isLogged}}>
   <ion-content>
     <ion-list id="inbox-list">
       <ion-list-header>Bienvenido</ion-list-header>

@@ -77,6 +77,10 @@ export class LoginPage implements OnInit {
     if(valid){
       // navegar al tabs
       this.uiService.presentToast('Bienvenido');
+      this.loginUser={
+        email: '',
+        password: ''
+      }
       this.navCtrl.navigateRoot('/register', {animated: true}).then(()=>{
         window.location.reload();
       });
@@ -91,6 +95,12 @@ export class LoginPage implements OnInit {
     const registerValid = await this.usuarioService.register(this.registerUser);
     if(registerValid){
       // navegar al tabs
+      this.uiService.presentToast('Bienvenido');
+      this.registerUser ={
+        email: '',
+        password: '',
+        nombre: '',
+      }
       this.navCtrl.navigateRoot('/register', {animated: true});
     }else{
       // mostrar alerta de usuario y contraseña no correcto
